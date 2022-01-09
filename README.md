@@ -88,13 +88,14 @@ python manage.py runserver
 # Примеры
 :white_check_mark: Получение публикаций
 
-```
+```html
  `GET` /api/v1/posts/
 ```
 :white_check_mark: Создание публикации
-```
+```html
 `POST` /api/v1/posts/
-
+```
+```
 {
 "text": "string",
 "image": "string",
@@ -102,8 +103,10 @@ python manage.py runserver
 }
 ```
 :white_check_mark: Получение, Обновление,  Частичное обновление, Удаление публикации по id.
-```
+```html
 `GET, PUT, PATCH, DELETE` /api/v1/posts/{id}/
+```
+```
 {
 "text": "string",
 "image": "string",
@@ -111,61 +114,72 @@ python manage.py runserver
 }
 ```
 :white_check_mark: Получение всех комментариев к публикации.
-```
+```html
 `GET` /api/v1/posts/{post_id}/comments/
 ```
 :white_check_mark: Добавление нового комментария к публикации.
-```
+```html
 `POST` /api/v1/posts/{post_id}/comments/
+```
+```
 {
 "text": "string"
 }
 ```
 :white_check_mark: Получение, Обновление, Частичное обновление, Удаление  комментария к публикации по id.
-```
+```html
 `GET, POST, PATCH, DELETE` /api/v1/posts/{post_id}/comments/{id}/
+```
+```
 {
 "text": "string"
 }
 ```
 :white_check_mark: Получение списка доступных сообществ.
-```
+```html
 `GET` /api/v1/groups/
 ```
 :white_check_mark: Получение информации о сообществе по id.
-```
+```html
 `GET` /api/v1/groups/{id}/
 ```
 :white_check_mark: Получить Все подписки пользователя
-```
+```html
 `GET` /api/v1/follow/
-
 ```
 :white_check_mark: Подписка пользователя от имени которого сделан запрос на пользователя переданного в теле запроса.
-```
+```html
 `POST` /api/v1/follow/
+```
+```
 {
 "following": "string"
 }
 ```
 :white_check_mark: Получение JWT-токена.
-```
+```html
 `POST` /api/v1/jwt/create/
+```
+```
 {
 "username": "string",
 "password": "string"
 }
 ```
 :white_check_mark: Обновление JWT-токена.
-```
+```html
 `POST` /api/v1/jwt/refresh/
+```
+```
 {
 "refresh": "string"
 }
 ```
 :white_check_mark: Проверка JWT-токена.
-```
+```html
 `POST` /api/v1/jwt/verify/
+```
+```
 {
 "token": "string"
 }
@@ -173,5 +187,5 @@ python manage.py runserver
 # Автор
 _Светлана Юревна Петрова_
 _(Svetlana Yu. Petrova)_
-![Svetlana Yu. Petrova](https://www.facebook.com/photo/?fbid=2550265821709438&set=a.113824735353571 "Svetlana Yu. Petrova")
+![Svetlana Yu. Petrova](https://scontent-arn2-1.xx.fbcdn.net/v/t1.6435-9/78063561_2550265828376104_5780089999668019200_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=jYF0uiDh6-oAX-Byn5S&_nc_ht=scontent-arn2-1.xx&oh=00_AT_zdEIwbjRhk6p4Fq_RH1QsUCzpD6jFyWJFQ3xi-ZI-DQ&oe=6200A485&s=230 "Svetlana Yu. Petrova")
 
