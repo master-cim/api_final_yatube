@@ -89,11 +89,11 @@ python manage.py runserver
 :white_check_mark: Получение публикаций
 
 ```python
- `GET` /api/v1/posts/
+ 'GET' /api/v1/posts/
 ```
 :white_check_mark: Создание публикации
 ```Python
-`POST` /api/v1/posts/
+'POST' /api/v1/posts/
 ```
 ```
 {
@@ -104,7 +104,7 @@ python manage.py runserver
 ```
 :white_check_mark: Получение, Обновление,  Частичное обновление, Удаление публикации по id.
 ```Python
-`GET, PUT, PATCH, DELETE` /api/v1/posts/{id}/
+`GET, PUT, PATCH, DELETE' /api/v1/posts/{id}/
 ```
 ```
 {
@@ -115,11 +115,11 @@ python manage.py runserver
 ```
 :white_check_mark: Получение всех комментариев к публикации.
 ```Python
-`GET` /api/v1/posts/{post_id}/comments/
+`GET' /api/v1/posts/{post_id}/comments/
 ```
 :white_check_mark: Добавление нового комментария к публикации.
 ```Python
-`POST` /api/v1/posts/{post_id}/comments/
+`POST' /api/v1/posts/{post_id}/comments/
 ```
 ```
 {
@@ -128,7 +128,7 @@ python manage.py runserver
 ```
 :white_check_mark: Получение, Обновление, Частичное обновление, Удаление  комментария к публикации по id.
 ```Python
-`GET, POST, PATCH, DELETE` /api/v1/posts/{post_id}/comments/{id}/
+`GET, POST, PATCH, DELETE' /api/v1/posts/{post_id}/comments/{id}/
 ```
 ```
 {
@@ -137,19 +137,19 @@ python manage.py runserver
 ```
 :white_check_mark: Получение списка доступных сообществ.
 ```Python
-`GET` /api/v1/groups/
+`GET' /api/v1/groups/
 ```
 :white_check_mark: Получение информации о сообществе по id.
 ```Python
-`GET` /api/v1/groups/{id}/
+`GET' /api/v1/groups/{id}/
 ```
 :white_check_mark: Получить Все подписки пользователя
 ```Python
-`GET` /api/v1/follow/
+`GET' /api/v1/follow/
 ```
 :white_check_mark: Подписка пользователя от имени которого сделан запрос на пользователя переданного в теле запроса.
 ```Python
-`POST` /api/v1/follow/
+`POST' /api/v1/follow/
 ```
 ```
 {
@@ -158,7 +158,7 @@ python manage.py runserver
 ```
 :white_check_mark: Получение JWT-токена.
 ```Python
-`POST` /api/v1/jwt/create/
+`POST' /api/v1/jwt/create/
 ```
 ```
 {
@@ -168,7 +168,7 @@ python manage.py runserver
 ```
 :white_check_mark: Обновление JWT-токена.
 ```Python
-`POST` /api/v1/jwt/refresh/
+`POST' /api/v1/jwt/refresh/
 ```
 ```
 {
@@ -177,7 +177,7 @@ python manage.py runserver
 ```
 :white_check_mark: Проверка JWT-токена.
 ```Python
-`POST` /api/v1/jwt/verify/
+`POST' /api/v1/jwt/verify/
 ```
 ```
 {
