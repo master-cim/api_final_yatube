@@ -71,11 +71,12 @@ python manage.py runserver
 # Примеры
 Получение публикаций
 ```
-GET /api/v1/posts/
+'GET' /api/v1/posts/
 ```
 Создание публикации
 ```
-POST /api/v1/posts/
+'POST' /api/v1/posts/
+:white_check_mark:
 {
 "text": "string",
 "image": "string",
@@ -104,7 +105,7 @@ POST /api/v1/posts/{post_id}/comments/
 ```
 Получение, Обновление, Частичное обновление, Удаление  комментария к публикации по id.
 ```
-GET, POST, PATCH, DELETE /api/v1/posts/{post_id}/comments/{id}/
+'GET, POST, PATCH, DELETE' /api/v1/posts/{post_id}/comments/{id}/
 {
 "text": "string"
 }
