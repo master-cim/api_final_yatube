@@ -88,7 +88,7 @@ python manage.py runserver
 # Примеры
 :white_check_mark: Получение публикаций
 
-```Python
+```python
  `GET` /api/v1/posts/
 ```
 :white_check_mark: Создание публикации
