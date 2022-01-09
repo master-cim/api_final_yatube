@@ -88,11 +88,11 @@ python manage.py runserver
 # Примеры
 :white_check_mark: Получение публикаций
 
-```html
+```Python
  `GET` /api/v1/posts/
 ```
 :white_check_mark: Создание публикации
-```html
+```Python
 `POST` /api/v1/posts/
 ```
 ```
@@ -103,7 +103,7 @@ python manage.py runserver
 }
 ```
 :white_check_mark: Получение, Обновление,  Частичное обновление, Удаление публикации по id.
-```html
+```Python
 `GET, PUT, PATCH, DELETE` /api/v1/posts/{id}/
 ```
 ```
@@ -114,11 +114,11 @@ python manage.py runserver
 }
 ```
 :white_check_mark: Получение всех комментариев к публикации.
-```html
+```Python
 `GET` /api/v1/posts/{post_id}/comments/
 ```
 :white_check_mark: Добавление нового комментария к публикации.
-```html
+```Python
 `POST` /api/v1/posts/{post_id}/comments/
 ```
 ```
@@ -127,7 +127,7 @@ python manage.py runserver
 }
 ```
 :white_check_mark: Получение, Обновление, Частичное обновление, Удаление  комментария к публикации по id.
-```html
+```Python
 `GET, POST, PATCH, DELETE` /api/v1/posts/{post_id}/comments/{id}/
 ```
 ```
@@ -136,19 +136,19 @@ python manage.py runserver
 }
 ```
 :white_check_mark: Получение списка доступных сообществ.
-```html
+```Python
 `GET` /api/v1/groups/
 ```
 :white_check_mark: Получение информации о сообществе по id.
-```html
+```Python
 `GET` /api/v1/groups/{id}/
 ```
 :white_check_mark: Получить Все подписки пользователя
-```html
+```Python
 `GET` /api/v1/follow/
 ```
 :white_check_mark: Подписка пользователя от имени которого сделан запрос на пользователя переданного в теле запроса.
-```html
+```Python
 `POST` /api/v1/follow/
 ```
 ```
@@ -157,7 +157,7 @@ python manage.py runserver
 }
 ```
 :white_check_mark: Получение JWT-токена.
-```html
+```Python
 `POST` /api/v1/jwt/create/
 ```
 ```
@@ -167,7 +167,7 @@ python manage.py runserver
 }
 ```
 :white_check_mark: Обновление JWT-токена.
-```html
+```Python
 `POST` /api/v1/jwt/refresh/
 ```
 ```
@@ -176,7 +176,7 @@ python manage.py runserver
 }
 ```
 :white_check_mark: Проверка JWT-токена.
-```html
+```Python
 `POST` /api/v1/jwt/verify/
 ```
 ```
