@@ -70,13 +70,14 @@ python manage.py runserver
 ```
 # Примеры
 Получение публикаций
+'GET'
 ```
-'GET' /api/v1/posts/
+ /api/v1/posts/
 ```
-Создание публикации
+:white_check_mark: Создание публикации
 ```
-'POST' /api/v1/posts/
-:white_check_mark:
+**POST** /api/v1/posts/
+
 {
 "text": "string",
 "image": "string",
