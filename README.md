@@ -89,11 +89,11 @@ python manage.py runserver
 :white_check_mark: Получение публикаций
 
 ```python
- 'GET' /api/v1/posts/
+ `GET' /api/v1/posts/
 ```
 :white_check_mark: Создание публикации
 ```Python
-'POST' /api/v1/posts/
+`POST' /api/v1/posts/
 ```
 ```
 {
