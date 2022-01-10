@@ -3,6 +3,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import get_object_or_404
+from rest_framework.pagination import LimitOffsetPagination
 
 from posts.models import Post, Group
 from .serializers import PostSerializer, CommentSerializer, GroupSerializer
@@ -16,8 +17,10 @@ class PostViewSet(viewsets.ModelViewSet):
     """
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    permission_classes = [IsAuthenticated,
+    permission_classes = [
+        # IsAuthenticated,
                           IsOwnerOrReadOnly]
+    pagination_class = LimitOffsetPagination
 
     @action(detail=True, methods=['patch'])
     def highlight(self, request, *args, **kwargs):
