@@ -1,45 +1,23 @@
 from rest_framework import serializers
-from posts.models import Post, Comment, Group, User
+from rest_framework.relations import SlugRelatedField
 
 
-class UserSerializer(serializers.ModelSerializer):
+from posts.models import Comment, Post
+
+
+class PostSerializer(serializers.ModelSerializer):
+    author = SlugRelatedField(slug_field='username', read_only=True)
 
     class Meta:
-        model = User
-        fields = ('__all__')
-        ref_name = 'ReadOnlyUsers'
+        fields = '__all__'
+        model = Post
 
 
 class CommentSerializer(serializers.ModelSerializer):
     author = serializers.SlugRelatedField(
-        read_only=True,
-        slug_field='username',
-        default=serializers.CurrentUserDefault())
+        read_only=True, slug_field='username'
+    )
 
     class Meta:
+        fields = '__all__'
         model = Comment
-        fields = ('id', 'post', 'author', 'text', 'created')
-
-
-class PostSerializer(serializers.ModelSerializer):
-    author = serializers.SlugRelatedField(
-        read_only=True,
-        slug_field='username',
-        default=serializers.CurrentUserDefault())
-    group = serializers.SlugRelatedField(
-        slug_field='slug',
-        queryset=Group.objects.all(),
-        required=False)
-
-    class Meta:
-        fields = ('id', 'text', 'author', 'image', 'pub_date',
-                  'group')
-        read_only_fields = ('author',)
-        model = Post
-
-
-class GroupSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Group
-        fields = ('title', 'slug', 'description', 'posts')
