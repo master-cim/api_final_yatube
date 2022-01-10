@@ -60,7 +60,7 @@ class Follow(models.Model):
         related_name='follower',
         verbose_name='Подписчик'
     )
-    author = models.ForeignKey(
+    following = models.ForeignKey(
         User,
         blank=False,
         null=False,
@@ -70,4 +70,4 @@ class Follow(models.Model):
     )
 
     def __str__(self):
-        return self.author
+        return self.following
