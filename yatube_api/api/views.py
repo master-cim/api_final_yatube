@@ -1,12 +1,12 @@
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
 from django.shortcuts import get_object_or_404
 from rest_framework.pagination import LimitOffsetPagination
 
-from posts.models import Post, Group
-from .serializers import PostSerializer, CommentSerializer, GroupSerializer
+from posts.models import Post, Group, Follow
+from .serializers import PostSerializer, CommentSerializer, GroupSerializer, FollowSerializer
 from .permissions import IsOwnerOrReadOnly
 
 
@@ -54,3 +54,22 @@ class GroupViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = GroupSerializer
     queryset = Group.objects.all()
     permission_classes = [IsAuthenticatedOrReadOnly]
+
+
+class FollowViewSet(viewsets.ModelViewSet):
+    """Отбираем подписки авторизованного юзера"""
+    serializer_class = FollowSerializer
+    permission_classes = [IsAuthenticated,
+                          IsOwnerOrReadOnly]
+
+    def get_queryset(self):
+        follow = get_object_or_404(Follow, id=self.kwargs.get('post_id'))
+        return follow.following
+
+    @action(detail=True, methods=['patch'])
+    def highlight(self, request, *args, **kwargs):
+        comment = self.get_object()
+        return Response(comment.highlighted)
+
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
