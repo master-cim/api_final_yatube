@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from django.shortcuts import get_object_or_404
 from rest_framework.pagination import LimitOffsetPagination
 
@@ -33,7 +33,7 @@ class PostViewSet(viewsets.ModelViewSet):
 class CommentViewSet(viewsets.ModelViewSet):
     """Отбираем только нужные комментарии к посту"""
     serializer_class = CommentSerializer
-    permission_classes = [IsAuthenticated,
+    permission_classes = [IsAuthenticatedOrReadOnly,
                           IsOwnerOrReadOnly]
 
     def get_queryset(self):
@@ -53,3 +53,4 @@ class GroupViewSet(viewsets.ReadOnlyModelViewSet):
     """Группы можно только просматривать"""
     serializer_class = GroupSerializer
     queryset = Group.objects.all()
+    permission_classes = [IsAuthenticatedOrReadOnly]
