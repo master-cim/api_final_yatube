@@ -63,13 +63,15 @@ class FollowViewSet(viewsets.ModelViewSet):
                           IsOwnerOrReadOnly]
 
     def get_queryset(self):
-        follow = get_object_or_404(Follow, id=self.kwargs.get('post_id'))
+        follow = get_object_or_404(Follow, user=self.request.user)
         return follow.following
+
 
     @action(detail=True, methods=['patch'])
     def highlight(self, request, *args, **kwargs):
-        comment = self.get_object()
-        return Response(comment.highlighted)
+        follow = self.get_object()
+        return Response(follow.highlighted)
 
     def perform_create(self, serializer):
-        serializer.save(author=self.request.user)
+        serializer.save(user=self.request.user)
+

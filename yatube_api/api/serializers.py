@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from posts.models import Post, Comment, Group, User, Follow
+from rest_framework.fields import CurrentUserDefault
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -11,18 +12,15 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class FollowSerializer(serializers.ModelSerializer):
-    following = serializers.SlugRelatedField(
+    following = UserSerializer(many=True)
+    user = serializers.StringRelatedField(
         read_only=True,
-        slug_field='following',
-        default=serializers.CurrentUserDefault())
-    user = serializers.SlugRelatedField(
-        read_only=True,
-        slug_field='follower',
-        default=serializers.CurrentUserDefault())
+        default=serializers.CurrentUserDefault()
+    )
 
     class Meta:
         model = Follow
-        fields = '_all_'
+        fields = '__all__'
 
 
 class CommentSerializer(serializers.ModelSerializer):
