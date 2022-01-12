@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnl
 from django.shortcuts import get_object_or_404
 from rest_framework.pagination import LimitOffsetPagination
 
-from posts.models import Post, Group, Follow
+from posts.models import Post, Group, Follow, User
 from .serializers import PostSerializer, CommentSerializer, GroupSerializer, FollowSerializer
 from .permissions import IsOwnerOrReadOnly
 
@@ -63,9 +63,9 @@ class FollowViewSet(viewsets.ModelViewSet):
                           IsOwnerOrReadOnly]
 
     def get_queryset(self):
-        follow = get_object_or_404(Follow, user=self.request.user)
-        return follow.following
-
+        # follow = get_object_or_404(User, follower=self.request.user)
+        return Follow.objects.filter(user=self.request.user)
+    
 
     @action(detail=True, methods=['patch'])
     def highlight(self, request, *args, **kwargs):
@@ -74,4 +74,3 @@ class FollowViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
-

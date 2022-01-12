@@ -12,7 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class FollowSerializer(serializers.ModelSerializer):
-    following = UserSerializer(many=True)
+    following = UserSerializer('username')
     user = serializers.StringRelatedField(
         read_only=True,
         default=serializers.CurrentUserDefault()
