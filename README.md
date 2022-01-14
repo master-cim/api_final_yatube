@@ -187,7 +187,3 @@ python manage.py runserver
 # Автор
 _Светлана Юревна Петрова_
 _(Svetlana Yu. Petrova)_
-![Svetlana Yu. Petrova](https://scontent-arn2-1.xx.fbcdn.net/v/t1.6435-9/78063561_2550265828376104_5780089999668019200_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=jYF0uiDh6-oAX-Byn5S&_nc_ht=scontent-arn2-1.xx&oh=00_AT_zdEIwbjRhk6p4Fq_RH1QsUCzpD6jFyWJFQ3xi-ZI-DQ&oe=6200A485&s=230 "Svetlana Yu. Petrova")
-
-:negative_squared_cross_mark: Я не буду это делать    
-:black_square_button: делать или не делать, вот в чем вопрос?   
