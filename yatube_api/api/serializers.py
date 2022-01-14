@@ -1,8 +1,6 @@
 from rest_framework import serializers
 from posts.models import Post, Comment, Group, User, Follow
-from rest_framework.fields import CurrentUserDefault
 from rest_framework.validators import UniqueTogetherValidator
-from rest_framework.exceptions import APIException
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -22,11 +20,15 @@ class FollowSerializer(serializers.ModelSerializer):
         slug_field='username',
         default=serializers.CurrentUserDefault())
 
-    # def create(self, validated_data):
-    #     """
-    #     Создает и возвращает экземпляр «Follow» с учетом проверенных данных.
-    #     """
-    #     return Follow.objects.create(**validated_data)
+    def validate_following(self, value):
+        """
+        Проверяем что юзер не подписывается на себя.
+        """
+        if value.following != value.follower:
+            raise serializers.ValidationError(
+                'Нельзя подписываться на себя?'
+            )
+        return value
 
     class Meta:
         model = Follow
@@ -38,14 +40,6 @@ class FollowSerializer(serializers.ModelSerializer):
                 message='Подписка на автора уже есть!'
             )
         ]
-
-    # def validate_following(self, data):
-    #     if data['user'] == data['following']:
-    #         raise serializers.ValidationError(
-    #             'Зачем подписываться на себя?'
-    #         )
-    #     return data
-
 
 
 class CommentSerializer(serializers.ModelSerializer):
