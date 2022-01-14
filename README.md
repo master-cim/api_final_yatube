@@ -187,7 +187,3 @@ python manage.py runserver
 # Автор
 _Светлана Юревна Петрова_
 _(Svetlana Yu. Petrova)_
-![Svetlana Yu. Petrova](https://vk.com/photo469987585_457239117 "Svetlana Yu. Petrova")
-
-:negative_squared_cross_mark: Я не буду это делать    
-:black_square_button: делать или не делать, вот в чем вопрос?   
