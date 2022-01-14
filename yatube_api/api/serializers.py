@@ -26,7 +26,7 @@ class FollowSerializer(serializers.ModelSerializer):
         """
         if value.following != value.follower:
             raise serializers.ValidationError(
-                'Нельзя подписываться на себя?'
+                'Нельзя подписываться на себя!'
             )
         return value
 
