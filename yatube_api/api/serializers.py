@@ -47,6 +47,10 @@ class CommentSerializer(serializers.ModelSerializer):
         read_only=True,
         slug_field='username',
         default=serializers.CurrentUserDefault())
+    post = serializers.SlugRelatedField(
+        read_only=True,
+        slug_field='id'
+    )
 
     class Meta:
         model = Comment
@@ -62,6 +66,7 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         fields = '__all__'
         read_only_fields = ('author',)
+        ordering = ['pub_date']
         model = Post
 
 
