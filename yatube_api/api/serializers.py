@@ -24,7 +24,7 @@ class FollowSerializer(serializers.ModelSerializer):
         """
         Проверяем что юзер не подписывается на себя.
         """
-        if value.following != value.follower:
+        if value.following == value.follower:
             raise serializers.ValidationError(
                 'Нельзя подписываться на себя!'
             )
@@ -74,4 +74,4 @@ class GroupSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Group
-        fields = ('title', 'slug', 'description', 'posts')
+        fields = ('title', 'slug', 'description')
