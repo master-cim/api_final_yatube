@@ -24,7 +24,7 @@ class FollowSerializer(serializers.ModelSerializer):
         """
         Проверяем что юзер не подписывается на себя.
         """
-        if value.following == value.follower:
+        if value == self.context['request'].user:
             raise serializers.ValidationError(
                 'Нельзя подписываться на себя!'
             )
