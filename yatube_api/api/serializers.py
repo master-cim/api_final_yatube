@@ -66,7 +66,6 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         fields = '__all__'
         read_only_fields = ('author',)
-        # ordering = ['pub_date']
         model = Post
 
 

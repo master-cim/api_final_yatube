@@ -1,7 +1,6 @@
 from rest_framework.routers import DefaultRouter
 from django.urls import re_path, path
 from django.urls import include
-from rest_framework.authtoken import views
 
 from .views import PostViewSet, GroupViewSet, CommentViewSet, FollowViewSet
 
@@ -19,5 +18,4 @@ urlpatterns = [
     re_path('^v1/', include(router_v1.urls)),
     path('v1/', include('djoser.urls')),
     path('v1/', include('djoser.urls.jwt')),
-
 ]

@@ -73,10 +73,5 @@ class FollowViewSet(viewsets.ModelViewSet):
     def get_queryset(self):
         return Follow.objects.filter(user=self.request.user)
 
-    # @action(detail=True, methods=['patch'])
-    # def highlight(self, request, *args, **kwargs):
-    #     follow = self.get_object()
-    #     return Response(follow.highlighted)
-
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
