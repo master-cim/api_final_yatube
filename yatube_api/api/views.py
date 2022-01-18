@@ -20,8 +20,8 @@ class PostViewSet(viewsets.ModelViewSet):
     """
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly,
-                          IsOwnerOrReadOnly]
+    permission_classes = (IsAuthenticatedOrReadOnly,
+                          IsOwnerOrReadOnly)
     pagination_class = LimitOffsetPagination
     ordering_fields = '__all__'
     ordering = ('pub_date',)
@@ -38,8 +38,8 @@ class PostViewSet(viewsets.ModelViewSet):
 class CommentViewSet(viewsets.ModelViewSet):
     """Отбираем только нужные комментарии к посту"""
     serializer_class = CommentSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly,
-                          IsOwnerOrReadOnly]
+    permission_classes = (IsAuthenticatedOrReadOnly,
+                          IsOwnerOrReadOnly)
     pagination_class = None
 
     def get_queryset(self):
@@ -57,7 +57,7 @@ class GroupViewSet(viewsets.ReadOnlyModelViewSet):
     """Группы можно только просматривать"""
     serializer_class = GroupSerializer
     queryset = Group.objects.all()
-    permission_classes = [IsAuthenticatedOrReadOnly]
+    permission_classes = (IsAuthenticatedOrReadOnly,)
     pagination_class = None
 
 

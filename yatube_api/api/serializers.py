@@ -47,10 +47,6 @@ class CommentSerializer(serializers.ModelSerializer):
         read_only=True,
         slug_field='username',
         default=serializers.CurrentUserDefault())
-    post = serializers.SlugRelatedField(
-        read_only=True,
-        slug_field='id'
-    )
 
     class Meta:
         model = Comment
