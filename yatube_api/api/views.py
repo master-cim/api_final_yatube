@@ -6,11 +6,14 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from django.shortcuts import get_object_or_404
 from rest_framework.pagination import LimitOffsetPagination
 from rest_framework import filters
+from rest_framework import mixins
 
 from posts.models import Post, Group, Follow
 from .serializers import PostSerializer, CommentSerializer
 from .serializers import GroupSerializer, FollowSerializer
 from .permissions import IsOwnerOrReadOnly
+
+
 
 
 class PostViewSet(viewsets.ModelViewSet):
@@ -60,15 +63,18 @@ class GroupViewSet(viewsets.ReadOnlyModelViewSet):
     permission_classes = (IsAuthenticatedOrReadOnly,)
 
 
+class CreateRetrieveViewSet(mixins.ListModelMixin, mixins.CreateModelMixin,
+                            viewsets.GenericViewSet):
+    pass
 
-class FollowViewSet(viewsets.ModelViewSet):
+
+class FollowViewSet(CreateRetrieveViewSet):
     """Отбираем подписки авторизованного юзера"""
     serializer_class = FollowSerializer
     permission_classes = [IsAuthenticated,
                           IsOwnerOrReadOnly]
     filter_backends = (filters.SearchFilter,)
     search_fields = ['following__username']
-
 
     def get_queryset(self):
         return Follow.objects.filter(user=self.request.user)
