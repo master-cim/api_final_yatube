@@ -14,8 +14,6 @@ from .serializers import GroupSerializer, FollowSerializer
 from .permissions import IsOwnerOrReadOnly
 
 
-
-
 class PostViewSet(viewsets.ModelViewSet):
     """
     Публикации могут создавать и редактировать
@@ -43,7 +41,6 @@ class CommentViewSet(viewsets.ModelViewSet):
     serializer_class = CommentSerializer
     permission_classes = (IsAuthenticatedOrReadOnly,
                           IsOwnerOrReadOnly)
-
 
     def get_queryset(self):
         post = get_object_or_404(Post, id=self.kwargs.get('post_id'))
