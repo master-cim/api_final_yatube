@@ -68,8 +68,8 @@ class CreateRetrieveViewSet(mixins.ListModelMixin, mixins.CreateModelMixin,
 class FollowViewSet(CreateRetrieveViewSet):
     """Отбираем подписки авторизованного юзера"""
     serializer_class = FollowSerializer
-    permission_classes = [IsAuthenticated,
-                          IsOwnerOrReadOnly]
+    permission_classes = (IsAuthenticated,
+                          IsOwnerOrReadOnly)
     filter_backends = (filters.SearchFilter,)
     search_fields = ['following__username']
 
